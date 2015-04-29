@@ -31,7 +31,7 @@ class MainMenu():
     #Bingo Board
     def __createBoard(self):
         row,col = 0,0
-        self.buttons = ["dummy"]
+        self.buttons = []
         numbersList = createList.readNum()
         for index in range(1,26):
             self.buttons.append(
@@ -62,7 +62,10 @@ class MainMenu():
                                fg = "white", font = ("bold"), width = 15, \
                                height = 5).grid(row=0,column=4)
     def change(self,index):
-        self.buttons[index].configure( bg = "black", fg="white")
+        if self.buttons[index-1]["bg"] =="white":
+            self.buttons[index-1].configure( bg = "black", fg="white")
+        else:
+            self.buttons[index-1].configure( bg = "white", fg="blue")
         
     #Main Menu Buttons
     def __mainMenuButtons(self):
